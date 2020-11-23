@@ -11,7 +11,6 @@ const CuentaPredial = require('./lib/Node/CuentaPredial')
 const InformacionAduanera = require('./lib/Node/InformacionAduanera')
 const Parte = require('./lib/Node/Parte')
 const Complemento = require('./lib/Node/Complemento')
-
 const Pago10 = require('./lib/Node/Pago10')
 const Pagos10 = require('./lib/Node/Pagos10')
 const Pago10DoctoRelacionado = require('./lib/Node/Pago10DoctoRelacionado')
