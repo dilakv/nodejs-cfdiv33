@@ -33,6 +33,9 @@ const CfdiRelacionado = require('cfdiv33').CfdiRelacionado
 const Traslado = require('cfdiv33').Traslado
 const Retencion = require('cfdiv33').Retencion
 
+const NodoPagos10 = require('cfdiv33').Pagos10
+const NodoPago10 = require('cfdiv33').Pago10
+
 const cfdi = new CFDI({
   //'Serie': 'A',
   //'Folio': '167ABC',
@@ -109,5 +112,28 @@ cfdi.add(new Traslado({
 cfdi.getXml()
 .then(xml => console.log(xml))
 .catch(e => console.log(e.toString(), '---> error'));
+
+let Pagos10 = new NodoPagos10({ 'Version': '1.0', 'xmlns:pago10': 'http://www.sat.gob.mx/Pagos' });
+
+ Pagos10.add(new NodoPago10(
+        {
+          'IdDocumento': 'b5caf559-7ba4-4d0b-b894-9d269e6a0bb1',
+          'Serie': 'P', //Esto es arbitrario, según su propio control
+          'Folio': '123456', //Esto también
+          'MonedaDR': 'MXN',
+          'MetodoDePagoDR': 'PPD',
+          'NumParcialidad': '1',
+          'ImpSaldoAnt': '10.00',
+          'ImpPagado': '1.00',
+          'ImpSaldoInsoluto': '9.00'
+
+        }, {
+        'FechaPago': '2020-11-07T12:58:04',
+        'Monto': '10.00', //La suma de todos los documentos relacionados
+        'FormaDePagoP': '01',
+        'MonedaP': "MXN"
+      }
+      ))
+
 
 ```
